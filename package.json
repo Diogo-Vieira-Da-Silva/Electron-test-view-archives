@@ -1,0 +1,30 @@
+{
+  "name": "electrum-test",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+   "start": "electron .",
+   "build": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^41.0.0"
+  },
+    "build": {
+      "appId": "Meu-Primeiro-App_Desktopp",
+      "productName": "Primeiro Projeto Desktop",
+      "directories": {
+        "output": "dist"
+      },
+      "files": [
+        "**/*"
+      ],
+      "win": {
+        "target": "nsis"
+      }
+    }
+  }
