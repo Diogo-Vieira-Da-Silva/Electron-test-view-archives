@@ -8,7 +8,7 @@ Differentiate visualy the files and folders  - ✅
 
 Allow to enter into a folder by clicking on it – 
 
-Implement a Back button to the previous folder – 
+Implement a Back button to the previous folder – ✅
 
 Update the list while navegating in the folders – ✅
 
