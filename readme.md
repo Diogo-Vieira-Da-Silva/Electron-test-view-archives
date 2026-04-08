@@ -6,7 +6,7 @@ List the files and folders on the directory – ✅
 
 Differentiate visualy the files and folders  - ✅
 
-Allow to enter into a folder by clicking on it – 
+Allow to enter into a folder by clicking on it – ✅
 
 Implement a Back button to the previous folder – ✅
 
@@ -22,7 +22,7 @@ Use path to manipulate the paths correctly – ✅
 
 Maintain control of the current directory - ✅
 
-Take care of errors - ✅
+Take care of errors like not existing folders and files - ✅
 
 
 ⚙️ Project Setup and Execution
@@ -91,7 +91,45 @@ node_modules
 
 dist
 
+📝 Development Process
+
+Initially, implementing the functionality to open files was straightforward, as it was something I had already worked on before through videos, Electron documentation, and some assistance from artificial intelligence.
+
+However, I faced challenges when working with the fs module, since I had not used it in this project before. The integration was somewhat complex and, at times, caused existing functionalities to break. After troubleshooting and making the necessary adjustments, I was able to resolve these issues.
+
+Next, I focused on implementing the folder-opening feature. During this process, I found limited documentation that directly addressed my needs, so I relied on artificial intelligence for support. This not only helped me complete the feature but also improved my understanding of how it works — which turned out to be simpler than I initially expected.
+
+With the core functionality completed, I then enhanced the visual aspects of the project, refining the styling, adding a back navigation button, and finally converting previously standalone file accesses into persistent links, allowing continuous access.
+
+With these improvements, the project was successfully completed.
+
 --------------------------------------------TRADUÇÃO-----------------------------------------
+
+🎯 Objetivos:
+
+Mostrar o caminho atual da pasta – ✅
+
+Listar os arquivos e pastas no diretório – ✅
+
+Diferenciar visualmente os arquivos e pastas - ✅
+
+Permitir entrar em uma pasta ao clicar nela – ✅
+
+Implementar um botão de volta para a pasta ou arquivo anterior – ✅
+
+Atualizar a lista enquanto navegar pelas pastas – ✅
+
+Ler e mostrar arquivos .json e .txt – ✅
+
+Usar ipc para a comunicação entre renderer e main – ✅
+
+Usar FS no processo principal para acessar os arquivos – ✅
+
+Usar path para manipular os caminhos corretamente – ✅
+
+Manter controle do diretório atual - ✅
+
+Cuidar de erros como arquivos e pastas inexistentes - ✅
 
 ⚙️ Configuração e Execução do Projeto
 
@@ -162,3 +200,15 @@ Mesmo que o projeto utilize .gitignore para ignorar algumas pastas, é necessár
 node_modules
 
 dist
+
+📝 Processo de criação
+
+Inicialmente, a implementação das funcionalidades para abrir arquivos foi tranquila, pois já era algo com que eu tinha experiência prévia, adquirida por meio de vídeos, da documentação do Electron e com o apoio de inteligência artificial.
+
+No entanto, enfrentei dificuldades ao trabalhar com o módulo fs, já que ainda não o havia utilizado neste projeto. A integração foi desafiadora e, em alguns momentos, acabou afetando funcionalidades já existentes. Após ajustes e correções, consegui resolver esses problemas.
+
+Em seguida, foquei na implementação da funcionalidade de abertura de pastas. Durante esse processo, encontrei pouca documentação que atendesse exatamente à minha necessidade, então utilizei inteligência artificial como suporte. Isso não só me ajudou a concluir a funcionalidade, como também a entender melhor seu funcionamento — que se mostrou mais simples do que eu imaginava.
+
+Com a base funcional concluída, passei a aprimorar o projeto visualmente, realizando ajustes no estilo, adicionando um botão de navegação (voltar) e, por fim, transformando os arquivos anteriormente acessados de forma isolada em links persistentes, permitindo acesso contínuo.
+
+Assim, o projeto foi finalizado com sucesso.
