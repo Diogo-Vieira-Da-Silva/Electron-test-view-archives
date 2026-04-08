@@ -23,6 +23,16 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.file-link {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.file-link:hover {
+  color: #0056b3;
+}
+
 .folder-path {
   background-color: yellow;
   padding: 5px 10px;

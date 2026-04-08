@@ -69,13 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
         filePathElement.textContent = filePath
         fileSection.style.display = 'block'
         folderSection.style.display = 'none'
-        await window.electronAPI.openFilePath(filePath)
       } else {
         filePathElement.textContent = 'Nenhum arquivo selecionado.'
       }
     } catch (error) {
       console.error('Erro ao abrir o arquivo:', error)
       filePathElement.textContent = 'Erro ao abrir o arquivo. Veja console.'
+    }
+  })
+
+  filePathElement.addEventListener('click', async event => {
+    event.preventDefault()
+    if (currentState && currentState.type === 'file') {
+      try {
+        await window.electronAPI.openFilePath(currentState.path)
+      } catch (error) {
+        console.error('Erro ao abrir arquivo selecionado:', error)
+      }
     }
   })
 
@@ -96,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Listar arquivos da pasta
         const files = await window.electronAPI.listFiles(dirPath)
-        displayFiles(files)
+        displayFiles(files, dirPath)
       } else {
         folderPathElement.textContent = 'Nenhuma pasta selecionada.'
       }
@@ -122,8 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
       li.className = file.isDirectory ? 'folder' : 'file'
       li.textContent = file.name
       
-      // Adicionar click listener para abrir arquivo
-      if (!file.isDirectory) {
+      if (file.isDirectory) {
+        li.addEventListener('dblclick', async () => {
+          try {
+            pushCurrentState()
+            currentState = { type: 'folder', path: file.path }
+            folderPathElement.textContent = file.path
+            const childFiles = await window.electronAPI.listFiles(file.path)
+            displayFiles(childFiles, file.path)
+          } catch (error) {
+            console.error('Erro ao abrir subpasta:', error)
+          }
+        })
+      } else {
         li.addEventListener('click', async () => {
           try {
             await window.electronAPI.openFilePath(file.path)
