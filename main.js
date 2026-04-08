@@ -11,6 +11,28 @@ async function handleFileOpen () {
   }
 }
 
+async function handleDirectoryOpen () {
+  const { canceled, filePaths } = await dialog.showOpenDialog({
+    properties: ['openDirectory']
+  })
+  if (!canceled) {
+    return filePaths[0]
+  }
+}
+
+async function handleListFiles (event, dirPath) {
+  try {
+    const files = await fs.promises.readdir(dirPath, { withFileTypes: true })
+    return files.map(file => ({
+      name: file.name,
+      path: path.join(dirPath, file.name),
+      isDirectory: file.isDirectory()
+    }))
+  } catch (error) {
+    throw new Error(`Erro ao ler diretório: ${error.message}`)
+  }
+}
+
 // Handle opening the file with default application
 async function handleOpenFilePath (event, filePath) {
   await shell.openPath(filePath)
@@ -40,9 +62,11 @@ function createWindow () {
 
 app.whenReady().then(() => {
   ipcMain.handle('dialog:openFile', handleFileOpen)
+  ipcMain.handle('dialog:openDirectory', handleDirectoryOpen)
   ipcMain.handle('dialog:openFilePath', handleOpenFilePath)
   ipcMain.handle('fs:readFile', handleReadFile)
   ipcMain.handle('fs:writeFile', handleWriteFile)
+  ipcMain.handle('fs:listFiles', handleListFiles)
   createWindow()
 })
 

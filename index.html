@@ -5,10 +5,20 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Dialog</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <button type="button" id="btn">Selecionar arquivo</button>
-    Caminho do arquivo: <strong id="filePath"></strong>
+    <button type="button" id="btn-file">Selecionar arquivo</button>
+    <button type="button" id="btn-folder">Selecionar pasta</button>
+    <div id="file-section" style="display: none; margin-top: 20px;">
+      <p>Caminho do arquivo: <strong id="filePath"></strong></p>
+    </div>
+    <div id="folder-section" style="display: none; margin-top: 20px;">
+      <p>Pasta: <strong id="folderPath" class="folder-path"></strong></p>
+      <div id="files-container">
+        <ul id="filesList"></ul>
+      </div>
+    </div>
     <script src='./renderer.js'></script>
   </body>
 </html>
