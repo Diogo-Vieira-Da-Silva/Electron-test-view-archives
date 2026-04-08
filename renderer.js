@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const btnBack = document.getElementById('btn-back')
   const btnFile = document.getElementById('btn-file')
   const btnFolder = document.getElementById('btn-folder')
   const filePathElement = document.getElementById('filePath')
@@ -6,6 +7,53 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileSection = document.getElementById('file-section')
   const folderSection = document.getElementById('folder-section')
   const filesList = document.getElementById('filesList')
+  let history = []
+  let currentState = null
+
+  function updateBackButton () {
+    btnBack.disabled = history.length === 0
+  }
+
+  function restoreState (state) {
+    if (!state) {
+      return
+    }
+
+    currentState = state
+    updateBackButton()
+
+    if (state.type === 'file') {
+      filePathElement.textContent = state.path
+      fileSection.style.display = 'block'
+      folderSection.style.display = 'none'
+    } else if (state.type === 'folder') {
+      folderPathElement.textContent = state.path
+      fileSection.style.display = 'none'
+      folderSection.style.display = 'block'
+      window.electronAPI.listFiles(state.path)
+        .then(files => displayFiles(files))
+        .catch(error => {
+          console.error('Erro ao restaurar pasta:', error)
+          filesList.innerHTML = '<li>Erro ao recuperar arquivos da pasta.</li>'
+        })
+    }
+  }
+
+  function pushCurrentState () {
+    if (currentState) {
+      history.push(currentState)
+      updateBackButton()
+    }
+  }
+
+  btnBack.addEventListener('click', () => {
+    if (history.length === 0) {
+      return
+    }
+
+    const previousState = history.pop()
+    restoreState(previousState)
+  })
 
   // Abrir arquivo
   btnFile.addEventListener('click', async () => {
@@ -16,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const filePath = await window.electronAPI.openFile()
       if (filePath) {
+        pushCurrentState()
+        currentState = { type: 'file', path: filePath }
         filePathElement.textContent = filePath
         fileSection.style.display = 'block'
         folderSection.style.display = 'none'
@@ -38,13 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const dirPath = await window.electronAPI.openDirectory()
       if (dirPath) {
+        pushCurrentState()
+        currentState = { type: 'folder', path: dirPath }
         folderPathElement.textContent = dirPath
         fileSection.style.display = 'none'
         folderSection.style.display = 'block'
         
         // Listar arquivos da pasta
         const files = await window.electronAPI.listFiles(dirPath)
-        displayFiles(files, dirPath)
+        displayFiles(files)
       } else {
         folderPathElement.textContent = 'Nenhuma pasta selecionada.'
       }

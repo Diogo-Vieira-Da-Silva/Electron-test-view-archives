@@ -18,6 +18,11 @@ button:hover {
   background-color: #0056b3;
 }
 
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
 .folder-path {
   background-color: yellow;
   padding: 5px 10px;
