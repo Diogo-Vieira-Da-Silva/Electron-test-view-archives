@@ -1,4 +1,31 @@
- ⚙️ Project Setup and Execution
+🎯 Objectives:
+
+Show the atual path of the folder – ✅
+
+List the files and folders on the directory – ✅
+
+Differentiate visualy the files and folders  - ✅
+
+Allow to enter into a folder by clicking on it – ✅
+
+Implement a Back button to the previous folder – ✅
+
+Update the list while navegating in the folders – ✅
+
+Read and show the content of the .json and .txt files – ✅
+
+Use IPC to the communication between renderer and main – ✅
+
+Use FS in the main process to access the files – ✅
+
+Use path to manipulate the paths correctly – ✅
+
+Maintain control of the current directory - ✅
+
+Take care of errors like not existing folders and files - ✅
+
+
+⚙️ Project Setup and Execution
 
 To run this project, you need to have Node.js installed on your computer. If you do not have it installed yet, download and install it before proceeding.
 
@@ -64,23 +91,45 @@ node_modules
 
 dist
 
-🔄 Additions
+📝 Development Process
 
-Since I already had the basic knowledge of Electron, I decided that I should try to add something new. So I used the documentation to see what I could implement, which were:
+Initially, implementing the functionality to open files was straightforward, as it was something I had already worked on before through videos, Electron documentation, and some assistance from artificial intelligence.
 
-A second window;
+However, I faced challenges when working with the fs module, since I had not used it in this project before. The integration was somewhat complex and, at times, caused existing functionalities to break. After troubleshooting and making the necessary adjustments, I was able to resolve these issues.
 
-And a button that changes the page’s lighting (dark/light mode).
+Next, I focused on implementing the folder-opening feature. During this process, I found limited documentation that directly addressed my needs, so I relied on artificial intelligence for support. This not only helped me complete the feature but also improved my understanding of how it works — which turned out to be simpler than I initially expected.
 
-Then I started the process.
+With the core functionality completed, I then enhanced the visual aspects of the project, refining the styling, adding a back navigation button, and finally converting previously standalone file accesses into persistent links, allowing continuous access.
 
-First, I created a second HTML file and followed what I saw in the documentation. At the beginning, I had some trouble because I thought I needed to create a second version of each file. However, I later learned that I could use only one main.js, just by creating a new function with different constants.
+With these improvements, the project was successfully completed.
 
-After that, I started adding elements to renderer.js, and I also created preload.js and style.css. Once everything was finished, it was easy to run the project. However, I discovered that both pages were connected. Soon I realized that it was because of how I made the style and the other functions that affected the entire system and the theme of the pages.
+--------------------------------------------TRADUÇÃO-----------------------------------------
 
-Just like I mentioned in my last project, I changed this and modified the styles and the functions in the JavaScript files so that the theme would not affect the entire project, including the window based on index.html. This allowed me to finally separate the windows and also make some improvements to the style of the second one to better differentiate it.
+🎯 Objetivos:
 
-------------------------------------TRADUÇÃO-------------------------------------------------
+Mostrar o caminho atual da pasta – ✅
+
+Listar os arquivos e pastas no diretório – ✅
+
+Diferenciar visualmente os arquivos e pastas - ✅
+
+Permitir entrar em uma pasta ao clicar nela – ✅
+
+Implementar um botão de volta para a pasta ou arquivo anterior – ✅
+
+Atualizar a lista enquanto navegar pelas pastas – ✅
+
+Ler e mostrar arquivos .json e .txt – ✅
+
+Usar ipc para a comunicação entre renderer e main – ✅
+
+Usar FS no processo principal para acessar os arquivos – ✅
+
+Usar path para manipular os caminhos corretamente – ✅
+
+Manter controle do diretório atual - ✅
+
+Cuidar de erros como arquivos e pastas inexistentes - ✅
 
 ⚙️ Configuração e Execução do Projeto
 
@@ -152,20 +201,14 @@ node_modules
 
 dist
 
-sejam geradas corretamente durante o processo de instalação e build.
+📝 Processo de criação
 
-🔄 Adições
+Inicialmente, a implementação das funcionalidades para abrir arquivos foi tranquila, pois já era algo com que eu tinha experiência prévia, adquirida por meio de vídeos, da documentação do Electron e com o apoio de inteligência artificial.
 
-Com eu possuindo o conhecimento base do Electron, agora eu deveria tentar adicionar algo novo. Por isso usei a documentação e vi o que deveria implementar, sendo:
+No entanto, enfrentei dificuldades ao trabalhar com o módulo fs, já que ainda não o havia utilizado neste projeto. A integração foi desafiadora e, em alguns momentos, acabou afetando funcionalidades já existentes. Após ajustes e correções, consegui resolver esses problemas.
 
-Uma segunda janela;
+Em seguida, foquei na implementação da funcionalidade de abertura de pastas. Durante esse processo, encontrei pouca documentação que atendesse exatamente à minha necessidade, então utilizei inteligência artificial como suporte. Isso não só me ajudou a concluir a funcionalidade, como também a entender melhor seu funcionamento — que se mostrou mais simples do que eu imaginava.
 
-E m botão que mude a iluminação da página
+Com a base funcional concluída, passei a aprimorar o projeto visualmente, realizando ajustes no estilo, adicionando um botão de navegação (voltar) e, por fim, transformando os arquivos anteriormente acessados de forma isolada em links persistentes, permitindo acesso contínuo.
 
-E em seguida comecei meu processo:
-
-Primeiro comecei criando um segundo html e me baseando no que eu via na documentação, eu inicialmente tive problemas achando que eu deveria fazer uma segunda versão para cada arquivo, mas aprendi a como usar somente um main.js e apenas criando uma nova função com const diferentes.
-
-Após isso, fui adicionando elementos ao renderer.js e criei o preload.js e o style.css, com tudo finalizado, foi fácil rodar, porém descobri que ambas as páginas estavam ligadas e logo vi que era por causa do modo que fiz o style e as outras funções que pegavam todo o sistema, todo o tema das páginas.
-
-E tal qual como eu falei no meu último projeto, eu mudei isso e mexi no style e nas funções nos js para que não pegue o tema de todo o projeto incluindo a janela baseada no index.html, assim eu pude finalmente dividir as janelas e também fazer algumas melhorias no estilo da segunda para diferenciar.
+Assim, o projeto foi finalizado com sucesso.
